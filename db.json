@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "description": "teste",
+      "category": "notebook",
+      "id": "L61NqLA"
+    },
+    {
+      "description": "teste",
+      "category": "notebook",
+      "id": "b-IbFp0"
+    },
+    {
+      "description": "teste2",
+      "category": "tablet",
+      "id": "pu-2LMH"
+    },
+    {
+      "description": "teste4",
+      "category": "tablet",
+      "id": "NtjO1N9"
+    },
+    {
+      "description": "teste",
+      "category": "tablet",
+      "id": "NCs8DHo"
+    },
+    {
+      "description": "teste55",
+      "category": "monitore",
+      "id": "Am3U-Z4"
+    }
+  ]
+}
