@@ -1,34 +1,31 @@
 {
   "products": [
     {
-      "description": "teste",
-      "category": "notebook",
-      "id": "L61NqLA"
-    },
-    {
-      "description": "teste",
-      "category": "notebook",
-      "id": "b-IbFp0"
-    },
-    {
-      "description": "teste2",
-      "category": "tablet",
+      "description": "primeiro",
+      "category": "smartphone",
+      "features": [
+        "eletronico",
+        "periferico"
+      ],
       "id": "pu-2LMH"
     },
     {
-      "description": "teste4",
+      "description": "segundo",
       "category": "tablet",
+      "features": [
+        "eletronico",
+        "periferico"
+      ],
       "id": "NtjO1N9"
     },
     {
-      "description": "teste",
-      "category": "tablet",
-      "id": "NCs8DHo"
-    },
-    {
-      "description": "teste55",
-      "category": "monitore",
-      "id": "Am3U-Z4"
+      "description": "teste3",
+      "category": "teclado",
+      "features": [
+        "eletronico",
+        "periferico"
+      ],
+      "id": "laVjXDa"
     }
   ]
 }

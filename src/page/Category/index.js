@@ -1,33 +1,51 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState  } from "react";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
+
+import Navbar from "../../components/Navbar/Navbar";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
+  const { id } = useParams();
+
   useEffect(() => {
-    axios.get("http://localhost:3004/products")
+    axios.get(`http://localhost:3004/products/${id}`)
       .then(res => {
-        setProducts(res.data);
-        console.log("Deu bom");
+        setCategory(res.data.category); // setCategory está recebendo o valor da categoria 
+        setDescription(res.data.description); // setDescription está recebendo o valor da descrição
+        console.log(" Effect OK"); 
       })
       .catch(err => {
-        console.log("Deu ruim");
+        console.log("Effect error");
       });
-  }, []);
+  }, [id]); // quando q ele será executado , se for vazio ... nunca altere o valor do id
+
+  useEffect(() => {
+    axios.get("http://localhost:3004/products")
+        .then(res => {
+            setProducts(res.data);
+            console.log("Deu bom");
+        })
+}, []);
 
 
-  function handleSubmit(e) {
+
+  function handleUpDate(e) {
     e.preventDefault();
-    axios.post("http://localhost:3004/products", {
+    axios.put(`http://localhost:3004/products/${id}`, {
       description: String(description),
       category: String(category)
     }
     ).then(res => {
-      setProducts([...products, res.data]);
+      // console.log("HandleUpDate");
+      setProducts(products.map(products => products.id === id ? res.data : products)); // setProducts está recebendo o valor do produto atualizado e não o produto antigo
+      setCategory(""); // setCategory está recebendo o valor vazio
+      setDescription("");   // setDescription está recebendo o valor vazio
+
     })
   }
 
@@ -38,10 +56,13 @@ function App() {
     })
 }
 
+  
   return (
+    
     <div className="App">
+      <Navbar></Navbar>
 
-      <form onSubmit={(e)=> handleSubmit(e)}>
+      <form onSubmit={(e)=> handleUpDate(e)}>
         <div>
           <input placeholder="nome produto" value={description}  onChange={(e) =>setDescription(e.target.value)} ></input>
         </div>
@@ -57,9 +78,16 @@ function App() {
               <option value="mouse">Mouse</option>
             </select>
         </div>
-        <button type="submit" >Adicionar</button>
+        <button type="submit" >Alterar</button>
       </form>
 
+      {/* <ul>
+        {products.map(product => (
+          <li key={product.id}>
+            <h1>{product.id}</h1>
+          </li>
+        ))}
+      </ul> */}
 
 
       <div>
@@ -82,12 +110,13 @@ function App() {
                             <td>{product.id} </td>
                             <td>{product.description}</td>
                             <td>{product.category}</td>
-                            <Link to={"/edit"}>
+
+                            <Link to={`/category/${product.id}`}>
                                 <button>Editar</button>
                             </Link>
-                
-                            <button onClick={() =>handleDelete(product.id)} >Excluir</button>
-                            
+
+                            <button onClick={() => handleDelete(product.id)} >Excluir</button>
+                           
                         </tr>
                     ))}
                 </tbody>

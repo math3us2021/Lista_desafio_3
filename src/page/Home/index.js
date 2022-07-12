@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import Navbar from "../../components/Navbar/Navbar";
+
 
 
 import { Title } from "./styles";
@@ -36,6 +38,7 @@ function App() {
         axios.get(`http://localhost:3004/products?${filter ? `description=${filter}` : ""}`)
             .then(res => {
                 setProducts(res.data);
+              
             })
     }
 
@@ -50,7 +53,9 @@ function App() {
 
 
     return (
+        
         <div>
+            <Navbar></Navbar>
             <Title>
                 <h1>Desafio 3</h1>
             </Title>
@@ -82,7 +87,7 @@ function App() {
 
                 <br></br>
 
-                <Link to={"/category"}>
+                <Link to={"/edit"}>
                     <button type="button" >Criar</button>
                 </Link>
 
@@ -94,6 +99,7 @@ function App() {
                         <th>ID</th>
                         <th>Descrição</th>
                         <th>Categoria</th>
+                        <th>Caracteristica Produto</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
@@ -107,7 +113,9 @@ function App() {
                             <td>{product.id} </td>
                             <td>{product.description}</td>
                             <td>{product.category}</td>
-                            <Link to={"/edit"}>
+                            <td>{product.features}</td>
+
+                            <Link to={`/category/${product.id}`}>
                                 <button>Editar</button>
                             </Link>
 

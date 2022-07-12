@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
+import Navbar from "../../components/Navbar/Navbar";
+
 function App() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("");
@@ -41,6 +43,7 @@ function App() {
   return (
     <div className="App">
 
+    <Navbar></Navbar>
       <form onSubmit={(e)=> handleSubmit(e)}>
         <div>
           <input placeholder="nome produto" value={description}  onChange={(e) =>setDescription(e.target.value)} ></input>
