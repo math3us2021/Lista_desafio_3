@@ -1,34 +1,14 @@
 {
   "products": [
     {
-      "description": "teste3",
-      "category": "smartphone",
-      "id": "S2xmOPH"
-    },
-    {
-      "description": "outro teste",
-      "category": "smartphone",
-      "id": "KKD6K0B"
-    },
-    {
-      "description": "teste5",
-      "category": "tablet",
-      "id": "ybRJxnY"
-    },
-    {
-      "description": "teste5",
-      "category": "tablet",
-      "id": "jClWffM"
-    },
-    {
-      "description": "teste6",
-      "category": "notebook",
-      "id": "trtKbBc"
-    },
-    {
       "description": "teste",
-      "category": "smartphone",
-      "id": "KFdyDmy"
+      "category": "notebook",
+      "id": "39Me9FG"
+    },
+    {
+      "description": "teste2",
+      "category": "notebook",
+      "id": "wZB97sA"
     }
   ]
 }

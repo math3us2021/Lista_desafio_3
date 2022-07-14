@@ -8,10 +8,10 @@ export const Title = styled.div`
     text-align: center;  
 
     h1 {
-    color: red;
-    font-size: 70px;
+    color: ;
+    font-size: 60px;
     font-weight: bold;
-    font-family: Oswald;
+  
     box-shadow:10px 5px 5px black;
     };
     
@@ -23,13 +23,13 @@ export const Title = styled.div`
     `;
 
 
+
     export const Input = styled.input`
     justify-content: center;
     text-align: center;
-    background: #232332;
-    color: antiquewhite;
+    background: #DDDAEF;
+    color: #222;
     border-radius: 8px;
-    border: 5px solid #232332;
     gap: 3rem;
     width: 350px;
     height: 40px;
@@ -80,11 +80,11 @@ export const Title = styled.div`
     
     
     select{
-        background: #232332;
-        color: #fff;
+        background: #DDDAEF;
+        color: #222;
         border-radius: 8px;
         width: 350px;
-        box-shadow:4px 4px 4px black;
+
         text-align: center;
         justify-content: center;
     }
@@ -129,8 +129,8 @@ export const Title = styled.div`
     margin: 1rem;
 
     select{
-        background: #232332;
-        color: #fff;
+        background: #DDDAEF;
+        color: #222;
         border-radius: 8px;
         width: 350px;
         height: 40px;

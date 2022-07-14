@@ -21,8 +21,7 @@ export default (props) => {
       </ul>
 
       <Title>
-        <h1>**Lista de Produtos**</h1>
-        <p color="red">CRUD React</p>
+        <h1>Lista de Produtos</h1>
       </Title>
 
     </div>
