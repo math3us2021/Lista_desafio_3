@@ -1,31 +1,34 @@
 {
   "products": [
     {
-      "description": "primeiro",
-      "category": "smartphone",
-      "features": [
-        "eletronico",
-        "periferico"
-      ],
-      "id": "pu-2LMH"
-    },
-    {
-      "description": "segundo",
-      "category": "tablet",
-      "features": [
-        "eletronico",
-        "periferico"
-      ],
-      "id": "NtjO1N9"
-    },
-    {
       "description": "teste3",
-      "category": "teclado",
-      "features": [
-        "eletronico",
-        "periferico"
-      ],
-      "id": "laVjXDa"
+      "category": "smartphone",
+      "id": "S2xmOPH"
+    },
+    {
+      "description": "outro teste",
+      "category": "smartphone",
+      "id": "KKD6K0B"
+    },
+    {
+      "description": "teste5",
+      "category": "tablet",
+      "id": "ybRJxnY"
+    },
+    {
+      "description": "teste5",
+      "category": "tablet",
+      "id": "jClWffM"
+    },
+    {
+      "description": "teste6",
+      "category": "notebook",
+      "id": "trtKbBc"
+    },
+    {
+      "description": "teste",
+      "category": "smartphone",
+      "id": "KFdyDmy"
     }
   ]
 }

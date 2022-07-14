@@ -1,20 +1,30 @@
 import React from "react";
 
-export default (props) => { 
+import { Title } from "../../page/Home/styles";
+
+export default (props) => {
 
 
-    return (
-        <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="/">Ativo</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/edit">Criar</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href=""></a>
-  </li>
+  return (
+    <div>
+      <ul style={{ background: "#232332" }} className="nav nav-tabs">
+        <li className="nav-item">
+          <a className="nav-link active" href="/">HOME</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="/edit">CRIAR</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href=""></a>
+        </li>
 
-</ul>
-    )
+      </ul>
+
+      <Title>
+        <h1>**Lista de Produtos**</h1>
+        <p color="red">CRUD React</p>
+      </Title>
+
+    </div>
+  )
 }

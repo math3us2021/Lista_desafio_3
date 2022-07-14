@@ -3,15 +3,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 import Navbar from "../../components/Navbar/Navbar";
+import Modal from "../../components/Modal/Modal";
 
 
+import { Input, Table, Search, Criar , SearchName} from "./styles";
 
-import { Title } from "./styles";
 
 function App() {
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState("");
     const [category, setCategory] = useState("");
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
         axios.get("http://localhost:3004/products")
@@ -33,14 +35,7 @@ function App() {
             })
     }
 
-    function handleSearchDescription(e) {
-        e.preventDefault();
-        axios.get(`http://localhost:3004/products?${filter ? `description=${filter}` : ""}`)
-            .then(res => {
-                setProducts(res.data);
-              
-            })
-    }
+   
 
     function handleSearchCategory(e) {
         e.preventDefault();
@@ -51,26 +46,30 @@ function App() {
     }
 
 
+    function handleSearchDescription(e) {
+        e.preventDefault();
+        axios.get(`http://localhost:3004/products?${filter ? `description=${filter}` : ""}`)
+            .then(res => {
+                setProducts(res.data);       
+            })}
 
     return (
         
         <div>
             <Navbar></Navbar>
-            <Title>
-                <h1>Desafio 3</h1>
-            </Title>
-
-
+         
             <div>
-                <form onSubmit={handleSearchDescription}>
-                    <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Busca pelo nome"></input>
-                    <button >Pesquisar Nome</button>
-                </form>
+
+            <SearchName onSubmit={handleSearchDescription}>
+                    <Input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Busca pelo nome"></Input>
+                    <button type="submit" className="btn btn-success">Pesquisar Nome   </button>
+                </SearchName>
 
 
 
-                <div div>
-                    <form onSubmit={handleSearchCategory}>
+
+                <div>
+                    <Search onSubmit={handleSearchCategory}>
                         <select value={category} onChange={(e) => setCategory(e.target.value)} >
                             <option value=" "> </option>
                             <option value="smartphone">Smartphone</option>
@@ -81,50 +80,86 @@ function App() {
                             <option value="mouse">Mouse</option>
                         </select>
 
-                        <button type="submit" >Pesquisar Categoria</button>
-                    </form>
+                        <button type="submit"  className="btn btn-success" >Pesquisar Categoria</button>
+                    </Search>
                 </div>
 
-                <br></br>
-
+            
+            <Criar>
                 <Link to={"/edit"}>
-                    <button type="button" >Criar</button>
+                    <button type="button" className="btn btn-outline-success btn-lg">+ Criar novo Produto</button>
                 </Link>
-
+            </Criar>
 
             </div>
-            <table>
-                <thead>
-                    <tr>
+
+            <button type="button" className="btn btn-link" onClick={()=> setOpenModal(true)}   >Caracteristicas</button>
+            {openModal && <Modal closeModal={setOpenModal} />}
+
+            
+            <Table>
+                <tbody>
+                    <th>
                         <th>ID</th>
                         <th>Descrição</th>
                         <th>Categoria</th>
                         <th>Caracteristica Produto</th>
                         <th>Editar</th>
                         <th>Excluir</th>
-                    </tr>
-                </thead>
-            </table>
-
-            <table>
-                <tbody>
                     {products.map(product => (
                         <tr key={product.id}>
                             <td>{product.id} </td>
                             <td>{product.description}</td>
                             <td>{product.category}</td>
-                            <td>{product.features}</td>
+                           <td>
+                            <button type="button" className="btn btn-link" onClick={()=> setOpenModal(true)}   >Caracteristicas</button>
+                            {openModal && <Modal closeModal={setOpenModal} />}
 
+
+
+                            {/* {isModalVisible && (
+                                <div className="modal" tabindex="-1" role="dialog">
+                                <div className="modal-dialog" role="document">
+                                  <div className="modal-content">
+                                    <div className="modal-header">
+                                      <h5 className="modal-title">Título do modal</h5>
+                                      <button type="button" className="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div className="modal-body">
+                                      <p>Texto do corpo do modal, é aqui.</p>
+                                    </div>
+                                    <div className="modal-footer">
+                                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                      <button type="button" className="btn btn-primary">Salvar mudanças</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            
+                            )} */}
+
+                            
+                            </td>
+                            
+                            {/* <Link to={<Modal></Modal>}>
+                                <td>Caracteristica</td>
+                            </Link> */}
+                            <td>
                             <Link to={`/category/${product.id}`}>
-                                <button>Editar</button>
+                                <button type="button" className="btn btn-warning">Editar</button>
                             </Link>
-
-                            <button onClick={() => handleDelete(product.id)} >Excluir</button>
+                            </td>
+                            <td>
+                            <button type="button" className="btn btn-danger" onClick={() => handleDelete(product.id)} >Excluir</button>
                             {/* dentro da função do botão eu passo p id */}
+                            </td>
                         </tr>
                     ))}
+                    </th>
                 </tbody>
-            </table>
+            </Table>
         </div>
     );
 }

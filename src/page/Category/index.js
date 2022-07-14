@@ -3,6 +3,7 @@ import React, { useEffect, useState  } from "react";
 import axios from "axios";
 import { Link, useParams} from "react-router-dom";
 
+import {Table, Criar, Input, Options} from "../Home/styles";
 import Navbar from "../../components/Navbar/Navbar";
 
 function App() {
@@ -63,11 +64,11 @@ function App() {
       <Navbar></Navbar>
 
       <form onSubmit={(e)=> handleUpDate(e)}>
-        <div>
-          <input placeholder="nome produto" value={description}  onChange={(e) =>setDescription(e.target.value)} ></input>
-        </div>
+        <Criar>
+          <Input placeholder="nome produto" value={description}  onChange={(e) =>setDescription(e.target.value)} ></Input>
+        </Criar>
 
-        < div>
+        <Options>
             <select value={category} onChange={(e) => setCategory(e.target.value)} >
               <option value=" "> </option>
               <option value="smartphone">Smartphone</option>
@@ -77,8 +78,10 @@ function App() {
               <option value="teclado">Teclado</option>
               <option value="mouse">Mouse</option>
             </select>
-        </div>
-        <button type="submit" >Alterar</button>
+        </Options>
+        <Criar>
+        <button className="btn btn-outline-success btn-lg" type="submit" >Alterar</button>
+        </Criar>
       </form>
 
       {/* <ul>
@@ -91,36 +94,40 @@ function App() {
 
 
       <div>
-            <table>
-                <thead>
-                    <tr>
+      <Table>
+                <tbody>
+                    <th>
                         <th>ID</th>
                         <th>Descrição</th>
                         <th>Categoria</th>
+                        <th>Caracteristica Produto</th>
                         <th>Editar</th>
                         <th>Excluir</th>
-                    </tr>
-                </thead>
-            </table>
-
-            <table>
-                <tbody>
                     {products.map(product => (
                         <tr key={product.id}>
                             <td>{product.id} </td>
                             <td>{product.description}</td>
                             <td>{product.category}</td>
-
+                           <td>
+                            <button type="button" className="btn btn-link" >Caracteristicas</button>
+                            </td>
+                            {/* <Link to={<Modal></Modal>}>
+                                <td>Caracteristica</td>
+                            </Link> */}
+                            <td>
                             <Link to={`/category/${product.id}`}>
-                                <button>Editar</button>
+                                <button type="button" className="btn btn-warning">Editar</button>
                             </Link>
-
-                            <button onClick={() => handleDelete(product.id)} >Excluir</button>
-                           
+                            </td>
+                            <td>
+                            <button type="button" className="btn btn-danger" onClick={() => handleDelete(product.id)} >Excluir</button>
+                            {/* dentro da função do botão eu passo p id */}
+                            </td>
                         </tr>
                     ))}
+                    </th>
                 </tbody>
-            </table>
+            </Table>
         </div>
 
     </div>
