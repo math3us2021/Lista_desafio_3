@@ -3,6 +3,7 @@ import axios from "axios";
 import './Modal.css';
 //import { useParams } from "react-router-dom";
 
+import Button from '@mui/material/Button';
 
 
 // export default ( props) => {
@@ -45,10 +46,11 @@ export default ({ closeModal, id }) => {
                                     Caracteristicas do produto
                                 </div>
                                 <ul className="list-group list-group-flush">
-                                    <li className="list-group-item"><strong>{products.caracteristica?.tamanho}</strong></li>
-                                    <li className="list-group-item">{products.caracteristica?.cor}</li>
-                                    <li className="list-group-item">{products.caracteristica?.peso}</li>
-                                    <li className="list-group-item">{products.caracteristica?.sistemaOperacional}</li>
+                                    <li className="list-group-item">Tamanho: <strong>{products.caracteristica?.tamanho}</strong></li>
+                                    <li className="list-group-item">Tamanho: <strong>{products.caracteristica?.cor}</strong></li>
+                                    <li className="list-group-item">Tamanho: <strong>{products.caracteristica?.peso}</strong></li>
+                                    <li className="list-group-item">Tamanho: <strong>{products.caracteristica?.sistemaOperacional}</strong></li>
+                               
                               
                                 </ul>
                             </div>
