@@ -1,14 +1,37 @@
 {
   "products": [
     {
-      "description": "teste",
-      "category": "notebook",
-      "id": "39Me9FG"
+      "description": "rwrw",
+      "category": "smartphone",
+      "caracteristica": {
+        "tamanho": "we",
+        "cor": "ew",
+        "peso": "ew",
+        "sistemaOperacional": "ew"
+      },
+      "id": "kOI4zgO"
     },
     {
-      "description": "teste2",
+      "description": "teste",
       "category": "notebook",
-      "id": "wZB97sA"
+      "caracteristica": {
+        "tamanho": "teste",
+        "cor": "teste",
+        "peso": "teste",
+        "sistemaOperacional": "teste"
+      },
+      "id": "MtQhT87"
+    },
+    {
+      "description": "Izamara",
+      "category": "notebook",
+      "caracteristica": {
+        "tamanho": "1.60",
+        "cor": "branca",
+        "peso": "50",
+        "sistemaOperacional": "windows"
+      },
+      "id": "Fhj6NHj"
     }
   ]
 }

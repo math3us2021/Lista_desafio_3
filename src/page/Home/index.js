@@ -15,15 +15,16 @@ function App() {
     const [filter, setFilter] = useState("");
     const [category, setCategory] = useState("");
     const [openModal, setOpenModal] = useState(false);
+    const [modal, setModal] = useState("");
 
     useEffect(() => {
         axios.get("http://localhost:3004/products")
             .then(res => {
                 setProducts(res.data);
-                console.log("Deu bom");
+                console.log("useEffect OK");
             })
             .catch(err => {
-                console.log("Deu ruim");
+                console.log("useEffect ERROR");
             });
     }, []);
 
@@ -50,9 +51,7 @@ function App() {
         axios.delete(`http://localhost:3004/products/${id}`)
             .then(res => {
                 setProducts(products.filter(product => product.id !== id));
-
-            })
-    }
+            })}
 
 
 
@@ -61,8 +60,7 @@ function App() {
         axios.get(`http://localhost:3004/products?${category ? `category=${category}` : ""}`)
             .then(res => {
                 setProducts(res.data);
-            })
-    }
+            })}
 
 
     function handleSearchDescription(e) {
@@ -70,8 +68,12 @@ function App() {
         axios.get(`http://localhost:3004/products?${filter ? `description=${filter}` : ""}`)
             .then(res => {
                 setProducts(res.data);
-            })
-    }
+            })}
+
+            function modalId(e) {
+                e.preventDefault();
+
+            }
 
     return (
 
@@ -114,8 +116,12 @@ function App() {
             </div>
 
             <button type="button" className="btn btn-link" onClick={() => setOpenModal(true)}   >Caracteristicas</button>
-            {openModal && <Modal closeModal={setOpenModal} />}
+            {openModal && 
+            <Modal 
+            closeModal={setOpenModal} 
+            />}
 
+       
 
             <Table>
                 <tbody>
@@ -132,8 +138,11 @@ function App() {
                                 <td>{product.description}</td>
                                 <td>{product.category}</td>
                                 <td>
-                                    <button type="button" className="btn btn-link" onClick={() => setOpenModal(true)}   >Caracteristicas</button>
-                                    {openModal && <Modal closeModal={setOpenModal} />}
+                                    
+                                    <button type="button" className="btn btn-link"   
+                                    onClick={() => { setOpenModal(true) ; setModal(product.id)}  }   >Caracteristicas</button>
+                                   
+                                    
                                 </td>
 
                                 <td>
@@ -141,7 +150,7 @@ function App() {
                                         <button type="button" className="btn btn-warning">Editar</button>
                                     </Link>
                                 </td>
-                                
+
                                 <td>
                                     <button type="button" className="btn btn-danger" onClick={() => delet(product.id)} >Excluir</button>
                                     {/* dentro da função do botão eu passo p id */}
@@ -151,6 +160,14 @@ function App() {
                     </th>
                 </tbody>
             </Table>
+
+        {openModal && 
+                                <Modal 
+                                closeModal={setOpenModal} 
+                                id={modal}
+                                />}
+
+
         </div>
     );
 }
